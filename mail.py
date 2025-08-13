@@ -30,14 +30,13 @@ mail=mail.replace('%website%',site)
 mail=mail.replace('%friend_name%',recipient_name)
 mail=mail.replace('%my_name%',my_name)
 recipient_mail = 'kirilltimoffev@gmail.com'
-letter = '''
-From: {}
+letter = \
+ '''From: {}
 To: {}
 Subject: Приглашение!
 Content-Type: text/plain; charset="UTF-8";
 {}'''.format(my_mail,recipient_mail,mail)
 letter = letter.encode("UTF-8")
-print(letter)
 server = smtplib.SMTP_SSL('smtp.yandex.ru', 465) 
 server.login(my_mail,password)
 server.sendmail(my_mail, my_mail, letter)
