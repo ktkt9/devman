@@ -1,6 +1,10 @@
 import os
 import smtplib
 from dotenv import load_dotenv
+load_dotenv()
+
+MY_MAIL = os.getenv("Login")
+PASSWORD=os.getenv("Password")
 mail = '''Привет, %friend_name%! %my_name% приглашает тебя на сайт %website%!
 
 %website% — это новая версия онлайн-курса по программированию. 
@@ -19,10 +23,7 @@ mail = '''Привет, %friend_name%! %my_name% приглашает тебя �
 На курсы, которые еще не вышли, можно подписаться и получить уведомление о релизе сразу на имейл.'''
 
 
-load_dotenv()
 
-my_mail = os.getenv("Login")
-password=os.getenv("Password")
 site='https://dvmn.org/profession-ref-program/yakirussshha/OtXag/'
 my_name='Кирилл'
 recipient_name='Артём'
@@ -35,9 +36,10 @@ letter = \
 To: {}
 Subject: Приглашение!
 Content-Type: text/plain; charset="UTF-8";
-{}'''.format(my_mail,recipient_mail,mail)
+
+{}'''.format(MY_MAIL,recipient_mail,mail)
 letter = letter.encode("UTF-8")
 server = smtplib.SMTP_SSL('smtp.yandex.ru', 465) 
-server.login(my_mail,password)
-server.sendmail(my_mail, my_mail, letter)
+server.login(MY_MAIL,PASSWORD)
+server.sendmail(MY_MAIL, MY_MAIL, letter)
 server.quit()
