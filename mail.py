@@ -3,8 +3,8 @@ import smtplib
 from dotenv import load_dotenv
 load_dotenv()
 
-MY_MAIL = os.getenv("Login")
-PASSWORD=os.getenv("Password")
+MY_MAIL = os.getenv("LOGIN")
+PASSWORD=os.getenv("PASSWORD")
 mail = '''Привет, %friend_name%! %my_name% приглашает тебя на сайт %website%!
 
 %website% — это новая версия онлайн-курса по программированию. 
